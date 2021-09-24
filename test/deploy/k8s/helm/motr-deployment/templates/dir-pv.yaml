@@ -1,0 +1,29 @@
+{{range $pvIndex, $pv := .Values.persistentFilesystemVolumes }}
+{{range $nodeNum, $nodes := until ($.Values.numNodes | int) }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ $pv.name }}-node{{ add $nodeNum 1 }}
+spec:
+  capacity:
+    storage: {{ $.Values.pvSize | quote }}
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: {{ $pv.name }}-node{{ add $nodeNum 1 }}
+  local:
+    path: {{ $pv.path }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node{{add $nodeNum 1}}
+---
+{{end}}
+{{end}}

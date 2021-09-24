@@ -1,0 +1,52 @@
+numPods: 3
+numNodes: 3
+image: ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci
+
+containerSpecs:
+- name: cortx-hax
+  systemd: "yes"
+- name: cortx-confd
+  systemd: "no"
+- name: cortx-ios
+  systemd: "no"
+- name: cortx-s31
+  systemd: "no"
+- name: cortx-s32
+  systemd: "no"
+- name: cortx-s33
+  systemd: "no"
+- name: cortx-s34
+  systemd: "no"
+- name: cortx-s35
+  systemd: "no"
+- name: cortx-auth
+  systemd: "no"
+- name: cortx-haproxy
+  systemd: "no"
+- name: cortx-bgproducer
+  systemd: "no"
+- name: cortx-bgconsumer
+  systemd: "no"
+
+
+pvSize: 10Gi
+
+pvcSize: 10Gi
+
+persistentBlockVolumes:
+- disk: sdb
+- disk: sdc
+- disk: sdd
+- disk: sde
+- disk: sdf
+- disk: sdg
+- disk: sdh
+- disk: sdi
+- disk: sdj
+- disk: sdk
+- disk: sdl
+- disk: sdm
+
+persistentFilesystemVolumes:
+- name: var-motr
+  path: /var/motr

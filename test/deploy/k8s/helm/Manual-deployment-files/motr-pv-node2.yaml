@@ -1,0 +1,174 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdb-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdb-node2
+  local:
+    path: /dev/sdb
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdc-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdc-node2
+  local:
+    path: /dev/sdc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdd-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdd-node2
+  local:
+    path: /dev/sdd
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdf-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdf-node2
+  local:
+    path: /dev/sdf
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdg-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdg-node2
+  local:
+    path: /dev/sdg
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdh-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdh-node2
+  local:
+    path: /dev/sdh
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-sdi-node2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-sdg-node2
+  local:
+    path: /dev/sdi
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node2

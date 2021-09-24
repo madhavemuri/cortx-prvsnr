@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdb-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdb-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdc-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdc-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdd-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdd-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdf-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdf-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdg-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdg-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdh-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdh-node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: motr-sdi-node2
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: motr-sdi-node2

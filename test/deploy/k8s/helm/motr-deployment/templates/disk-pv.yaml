@@ -1,0 +1,29 @@
+{{range $pvIndex, $pv := .Values.persistentBlockVolumes }}
+{{range $nodeNum, $nodes := until ($.Values.numNodes | int) }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: motr-{{ $pv.disk }}-node{{ add $nodeNum 1 }}
+spec:
+  capacity:
+    storage: {{ $.Values.pvSize | quote }}
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: motr-{{ $pv.disk }}-node{{ add $nodeNum 1 }}
+  local:
+    path: /dev/{{ $pv.disk }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-name
+          operator: In
+          values:
+          - node{{add $nodeNum 1}}
+---
+{{end}}
+{{end}}

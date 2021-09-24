@@ -1,0 +1,494 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-service2
+  labels:
+    app: node2-pods
+spec:
+  hostname: data-service2
+  containers:
+  - name: cortx-hax
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: cgroup
+      mountPath: /sys/fs/cgroup:ro
+    - name: var-run-cortx-hax
+      mountPath: /run
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-confd
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-ios
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-s31
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-s32
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-s33
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-s34
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-s35
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-auth
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-haproxy
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-bgproducer
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  - name: cortx-bgconsumer
+    image: "ghcr.io/seagate/cortx-all:2.0.0-156-custom-ci"
+    volumeMounts:
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    - name: sdb
+      devicePath: /dev/sdb
+    - name: sdc
+      devicePath: /dev/sdc
+    - name: sdd
+      devicePath: /dev/sdd
+    - name: sde
+      devicePath: /dev/sde
+    - name: sdf
+      devicePath: /dev/sdf
+    - name: sdg
+      devicePath: /dev/sdg
+    - name: sdh
+      devicePath: /dev/sdh
+    - name: sdi
+      devicePath: /dev/sdi
+    - name: sdj
+      devicePath: /dev/sdj
+    - name: sdk
+      devicePath: /dev/sdk
+    - name: sdl
+      devicePath: /dev/sdl
+    - name: sdm
+      devicePath: /dev/sdm
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'
+  volumes:
+  - name: sdb
+    persistentVolumeClaim:
+      claimName: motr-sdb-node2
+  - name: sdc
+    persistentVolumeClaim:
+      claimName: motr-sdc-node2
+  - name: sdd
+    persistentVolumeClaim:
+      claimName: motr-sdd-node2
+  - name: sde
+    persistentVolumeClaim:
+      claimName: motr-sde-node2
+  - name: sdf
+    persistentVolumeClaim:
+      claimName: motr-sdf-node2
+  - name: sdg
+    persistentVolumeClaim:
+      claimName: motr-sdg-node2
+  - name: sdh
+    persistentVolumeClaim:
+      claimName: motr-sdh-node2
+  - name: sdi
+    persistentVolumeClaim:
+      claimName: motr-sdi-node2
+  - name: sdj
+    persistentVolumeClaim:
+      claimName: motr-sdj-node2
+  - name: sdk
+    persistentVolumeClaim:
+      claimName: motr-sdk-node2
+  - name: sdl
+    persistentVolumeClaim:
+      claimName: motr-sdl-node2
+  - name: sdm
+    persistentVolumeClaim:
+      claimName: motr-sdm-node2
+  - name: var-run-cortx-hax
+    emptyDir:
+      medium: Memory
+  - name: var-motr    
+    persistentVolumeClaim:
+      claimName: var-motr-node2
+  - name: cgroup
+    hostPath:
+      path: /sys/fs/cgroup
+      type: DirectoryOrCreate
+  nodeSelector:
+    node-name: node2

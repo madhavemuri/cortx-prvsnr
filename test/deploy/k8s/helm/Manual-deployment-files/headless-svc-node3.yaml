@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-service3
+spec:
+  selector:
+    app: node3-pods
+  clusterIP: None

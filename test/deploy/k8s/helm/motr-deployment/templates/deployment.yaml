@@ -1,0 +1,64 @@
+#{{range $nodeNum, $nodes := until ($.Values.numNodes | int) }}
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: node{{add $nodeNum 1}}-pods
+#  labels:
+#    app: node{{add $nodeNum 1}}-pods
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: node{{add $nodeNum 1}}-pods
+#  template:
+#    metadata:
+#      labels:
+#        app: node{{add $nodeNum 1}}-pods
+#    spec:
+#      containers:
+#      {{ range $i, $container := $.Values.containerSpecs }}
+#      - name: {{ $container.name }}
+#        image: {{ $.Values.image | quote }}
+#        volumeMounts:
+#        - name: cgroup
+#          mountPath: /sys/fs/cgroup:ro
+#        - name: var-run{{ add $i 1 }}
+#          mountPath: /run
+#        - name: var-motr
+#          mountPath: /var/motr
+#        volumeDevices:
+#        {{range $pvIndex, $pv := $.Values.persistentBlockVolumes }}
+#        - name: {{ $pv.disk }}
+#          devicePath: /dev/{{ $pv.disk }}
+#        {{ end }}
+#        command:
+#         - "/sbin/init"
+#         - "-c"
+#         - "--"
+#        args:
+#         - 'sleep infinity'  
+#      {{ end }}
+#      volumes:
+#      {{range $pvIndex, $pv := $.Values.persistentBlockVolumes }}
+#      - name: {{ $pv.disk }}
+#        persistentVolumeClaim:
+#          claimName: motr-{{ $pv.disk }}-node{{ add $nodeNum 1 }}
+#      {{ end }}
+#      {{ range $cont, $container := until ($.Values.numContainers | int) }}
+#      - name: var-run{{ add $cont 1 }}
+#        emptyDir:
+#          medium: Memory 
+#      {{ end }}
+#      {{ range $vol, $fsVol := $.Values.persistentFilesystemVolumes }}
+#      - name: {{ $fsVol.name }}    
+#        persistentVolumeClaim:
+#          claimName: {{ $fsVol.name }}-node{{ add $nodeNum 1 }}
+#      {{ end }}
+#      - name: cgroup
+#        hostPath:
+#          path: /sys/fs/cgroup
+#          type: DirectoryOrCreate
+#      nodeSelector:
+#        node-name: node{{ add $nodeNum 1 }}
+#---
+#{{ end }}

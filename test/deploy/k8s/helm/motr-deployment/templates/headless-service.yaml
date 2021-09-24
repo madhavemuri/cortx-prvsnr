@@ -1,0 +1,11 @@
+{{ range $nodeNum, $nodes := until ($.Values.numNodes | int) }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-service{{add $nodeNum 1}}
+spec:
+  selector:
+    app: node{{add $nodeNum 1}}-pods
+  clusterIP: None
+---
+{{ end }}

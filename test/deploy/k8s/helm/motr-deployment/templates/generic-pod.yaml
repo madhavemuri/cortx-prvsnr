@@ -1,0 +1,73 @@
+{{- range $podNum, $nodes := until ($.Values.numPods | int) }}
+{{- $node := (mod (add $podNum 1) $.Values.numNodes) | int }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-service{{ $node }}
+  labels:
+    app: node{{add $podNum 1}}-pods
+spec:
+  hostname: data-service{{ $node }}
+  containers:
+  {{- range $i, $container := $.Values.containerSpecs }}
+  - name: {{ $container.name }}
+    image: {{ $.Values.image | quote }}
+    volumeMounts:
+    {{- if eq $container.systemd "yes" }}
+    - name: cgroup
+      mountPath: /sys/fs/cgroup:ro
+    - name: var-run-{{ $container.name }}
+      mountPath: /run
+    {{- end }}
+    - name: var-motr
+      mountPath: /var/motr
+    volumeDevices:
+    {{- range $pvIndex, $pv := $.Values.persistentBlockVolumes }}
+    - name: {{ $pv.disk }}
+      devicePath: /dev/{{ $pv.disk }}
+    {{- end }}
+    command:
+     - "/sbin/init"
+     - "-c"
+     - "--"
+    args:
+     - 'sleep infinity'  
+  {{- end }}
+  volumes:
+  {{- range $pvIndex, $pv := $.Values.persistentBlockVolumes }}
+  - name: {{ $pv.disk }}
+    persistentVolumeClaim:
+      {{- if eq $node 0 }}
+      claimName: motr-{{ $pv.disk }}-node{{ $.Values.numNodes }}
+      {{- else }}
+      claimName: motr-{{ $pv.disk }}-node{{ $node }}
+      {{- end }}
+  {{- end }}
+  {{- range $i, $container := $.Values.containerSpecs }}
+  {{- if eq $container.systemd "yes" }}
+  - name: var-run-{{ $container.name }}
+    emptyDir:
+      medium: Memory
+  {{- end }}
+  {{- end }}
+  {{- range $vol, $fsVol := $.Values.persistentFilesystemVolumes }}
+  - name: {{ $fsVol.name }}    
+    persistentVolumeClaim:
+      {{- if eq $node 0 }}
+      claimName: {{ $fsVol.name }}-node{{ $.Values.numNodes }}
+      {{- else }}
+      claimName: {{ $fsVol.name }}-node{{ $node }}
+      {{- end }}
+  {{- end }}
+  - name: cgroup
+    hostPath:
+      path: /sys/fs/cgroup
+      type: DirectoryOrCreate
+  nodeSelector:
+    {{- if eq $node 0 }}
+    node-name: node{{ $.Values.numNodes }}
+    {{- else }}
+    node-name: node{{ $node }}
+    {{- end }}
+---
+{{- end }}
